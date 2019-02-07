@@ -64,9 +64,9 @@ class IndexPage extends React.Component {
         <br />
         <strong>{remainingHours}</strong> hora{remainingHours === 1 ? '' : 's'},
         {' '}
-        <strong>{remainingMinutes}</strong> minuto{remainingMinutes === 1 ? '' : 's'},
+        <strong>{remainingMinutes}</strong> minuto{remainingMinutes === 1 ? '' : 's'}
         {' e '}
-        <strong>{remainingSeconds}</strong> segundo{remainingSeconds === 1 ? '' : 's'}, na prisão.
+        <strong>{remainingSeconds}</strong> segundo{remainingSeconds === 1 ? '' : 's'} na prisão.
       </p>
     );
   }
