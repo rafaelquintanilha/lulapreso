@@ -56,17 +56,17 @@ class IndexPage extends React.Component {
     const { remainingYears, remainingMonths, remainingDays, remainingHours, remainingMinutes, remainingSeconds } = this.remainingTime();
     return (
       <p>
-        Restam <strong>{remainingYears}</strong> ano{remainingYears > 1 ? 's' : ''},
+        Restam <strong>{remainingYears}</strong> ano{remainingYears === 1 ? '' : 's'},
         {' '}
-        <strong>{remainingMonths}</strong> {remainingMonths > 1 ? 'meses' : 'mês'}, 
+        <strong>{remainingMonths}</strong> {remainingMonths === 1 ? 'mês' : 'meses'}, 
         {' '}
-        <strong>{remainingDays}</strong> dia{remainingDays > 1 ? 's' : ''},
+        <strong>{remainingDays}</strong> dia{remainingDays === 1 ? '' : 's'},
         <br />
-        <strong>{remainingHours}</strong> hora{remainingHours > 1 ? 's' : ''},
+        <strong>{remainingHours}</strong> hora{remainingHours === 1 ? '' : 's'},
         {' '}
-        <strong>{remainingMinutes}</strong> minuto{remainingMinutes > 1 ? 's' : ''},
+        <strong>{remainingMinutes}</strong> minuto{remainingMinutes === 1 ? '' : 's'},
         {' e '}
-        <strong>{remainingSeconds}</strong> segundo{remainingSeconds > 1 ? 's' : ''}, na prisão.
+        <strong>{remainingSeconds}</strong> segundo{remainingSeconds === 1 ? '' : 's'}, na prisão.
       </p>
     );
   }
