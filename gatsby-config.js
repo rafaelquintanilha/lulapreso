@@ -24,8 +24,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Quanto tempo resta ao Lula na cadeia?`,
+        short_name: `Lula na Cadeia`,
         start_url: `/`,
         background_color: `#ff0000`,
         theme_color: `#ff0000`,
