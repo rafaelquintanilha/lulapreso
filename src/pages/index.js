@@ -15,7 +15,7 @@ class IndexPage extends React.Component {
     this.arrestDate = "2018-04-07";
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.interval = setInterval(() => {
       this.setState({now: moment()});
     }, 1000)
