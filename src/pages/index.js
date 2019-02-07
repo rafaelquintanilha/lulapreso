@@ -4,8 +4,8 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import moment from 'moment';
-import { WhatsappShareButton, TwitterShareButton, FacebookShareButton } from 'react-share';
-import { WhatsappIcon, TwitterIcon, FacebookIcon } from 'react-share';
+import { WhatsappShareButton, TwitterShareButton, EmailShareButton } from 'react-share';
+import { WhatsappIcon, TwitterIcon, EmailIcon } from 'react-share';
 
 class IndexPage extends React.Component {
 
@@ -26,31 +26,25 @@ class IndexPage extends React.Component {
   }
 
   releaseDate = () => {
-    const arrestDate = "2018-04-07";
     const sentences = [
       { years: 12, months: 1 },
       { years: 12, months: 11 }
     ];
     const totalYears = sentences.map(s => s.years).reduce((a, b) => a + b);
     const totalMonths = sentences.map(s => s.months).reduce((a, b) => a + b);
-    return moment(arrestDate)
+    return moment(this.arrestDate)
       .add(totalYears, 'years')
       .add(totalMonths, 'months');
   }
-  
-  remainingDays = () => moment(this.releaseDate()).diff(this.state.now, 'days');
-  remainingYears = () => moment(this.releaseDate()).diff(this.state.now, 'years');
-  remainingSeconds = () => moment(this.releaseDate()).diff(this.state.now, 'seconds');
 
   remainingTime = () => {
     const releaseDate = this.releaseDate();
-    const remainingYears = this.remainingYears();
-    const remainingMonths = (-1) * moment(this.arrestDate).add(remainingYears, 'years').diff(releaseDate, 'months');
-    const remainingDays = moment(this.arrestDate)
-      .add(remainingYears, 'years')
-      .add(remainingMonths, 'months')
-      .diff(releaseDate, 'days');
-
+    const remainingYears = moment(releaseDate).diff(this.state.now, 'years');
+    const remainingMonths = moment(releaseDate).diff(this.state.now, 'months') % 12;
+    const remainingDays = moment(releaseDate)
+      .subtract(remainingYears, 'years')
+      .subtract(remainingMonths, 'months')
+      .diff(this.state.now, 'days');
     const tomorrow = moment().add(1, 'day').hour(0).minute(0).second(0);
     const remainingHours = tomorrow.diff(this.state.now, 'hours');
     const remainingMinutes = tomorrow.diff(this.state.now, 'minutes') - remainingHours * 60;
@@ -62,17 +56,17 @@ class IndexPage extends React.Component {
     const { remainingYears, remainingMonths, remainingDays, remainingHours, remainingMinutes, remainingSeconds } = this.remainingTime();
     return (
       <p>
-        Faltam <strong>{remainingYears}</strong> anos,
+        Restam <strong>{remainingYears}</strong> ano{remainingYears > 1 ? 's' : ''},
         {' '}
-        <strong>{remainingMonths}</strong> meses, 
+        <strong>{remainingMonths}</strong> {remainingMonths > 1 ? 'meses' : 'mês'}, 
         {' '}
-        <strong>{remainingDays}</strong> dias,
+        <strong>{remainingDays}</strong> dia{remainingDays > 1 ? 's' : ''},
         <br />
-        <strong>{remainingHours}</strong> horas,
+        <strong>{remainingHours}</strong> hora{remainingHours > 1 ? 's' : ''},
         {' '}
-        <strong>{remainingMinutes}</strong> minutos,
+        <strong>{remainingMinutes}</strong> minuto{remainingMinutes > 1 ? 's' : ''},
         {' e '}
-        <strong>{remainingSeconds}</strong> segundos na prisão.
+        <strong>{remainingSeconds}</strong> segundo{remainingSeconds > 1 ? 's' : ''}, na prisão.
       </p>
     );
   }
@@ -80,7 +74,7 @@ class IndexPage extends React.Component {
   render() {
     return (
       <Layout style={{margin: "auto"}}>
-        <SEO title="Home" keywords={[`gatsby`, `application`, `react`, `lula`]} />
+        <SEO title="Lula na Cadeia" keywords={[`gatsby`, `application`, `react`, `lula`]} />
         <section>
           <div>
             <p><b>Lula</b> ficará preso até <strong>{this.releaseDate().format("DD/MM/YYYY")}</strong></p>
@@ -98,7 +92,7 @@ class IndexPage extends React.Component {
             {this.remainingText}
             <div className="social">
               <WhatsappShareButton
-                title="Quanto tempo de prisão resta ao Lula?"
+                title="Quanto tempo de prisão resta ao molusco?"
                 url="https://lulapreso.netlify.com"
               >
                 <div style={{cursor: "pointer"}}>
@@ -106,21 +100,22 @@ class IndexPage extends React.Component {
                 </div>
               </WhatsappShareButton>
               <TwitterShareButton
-                title="Quanto tempo de prisão resta ao Lula?"
+                title="Quanto tempo de prisão resta ao molusco?"
                 url="https://lulapreso.netlify.com"
+                hashtags={["LulaTaPresoBabaca", "LulaLivre2043"]}
               >
                 <div style={{cursor: "pointer"}}>
-                  <TwitterIcon size={64} round={true} hashtags={["LulaTaPresoBabaca"]} />
+                  <TwitterIcon size={64} round={true} />
                 </div>
               </TwitterShareButton>
-              <FacebookShareButton
-                quote="Quanto tempo de prisão resta ao Lula?"
+              <EmailShareButton
+                subject="Quanto tempo de prisão resta ao molusco?"
                 url="https://lulapreso.netlify.com"
               >
                 <div style={{cursor: "pointer"}}>
-                  <FacebookIcon size={64} round={true} />
+                  <EmailIcon size={64} round={true} />
                 </div>
-              </FacebookShareButton>
+              </EmailShareButton>
             </div>
           </div>
         </section>

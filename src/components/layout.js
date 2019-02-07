@@ -37,7 +37,7 @@ const Layout = ({ children }) => (
               color: "white", 
               textDecoration: "none", 
               fontWeight: "bold"
-            }} href="https://rafaelquintanilha.com">Rafael Quintanilha</a>
+            }} href="https://rafaelquintanilha.com">Rafael Quintanilha</a>, um homem livre
           </footer>
         </div>
       </>
