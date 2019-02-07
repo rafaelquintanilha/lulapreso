@@ -99,7 +99,7 @@ class IndexPage extends React.Component {
             <div className="social">
               <WhatsappShareButton
                 title="Quanto tempo de prisão resta ao Lula?"
-                url={window.location.href}
+                url="https://lulapreso.netlify.com"
               >
                 <div style={{cursor: "pointer"}}>
                   <WhatsappIcon size={64} round={true} />
@@ -107,7 +107,7 @@ class IndexPage extends React.Component {
               </WhatsappShareButton>
               <TwitterShareButton
                 title="Quanto tempo de prisão resta ao Lula?"
-                url={window.location.href}
+                url="https://lulapreso.netlify.com"
               >
                 <div style={{cursor: "pointer"}}>
                   <TwitterIcon size={64} round={true} hashtags={["LulaTaPresoBabaca"]} />
@@ -115,7 +115,7 @@ class IndexPage extends React.Component {
               </TwitterShareButton>
               <FacebookShareButton
                 quote="Quanto tempo de prisão resta ao Lula?"
-                url={window.location.href}
+                url="https://lulapreso.netlify.com"
               >
                 <div style={{cursor: "pointer"}}>
                   <FacebookIcon size={64} round={true} />
