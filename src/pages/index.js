@@ -27,14 +27,16 @@ class IndexPage extends React.Component {
 
   releaseDate = () => {
     const sentences = [
-      { years: 12, months: 1 },
-      { years: 12, months: 11 }
+      { years: 8, months: 10, days: 20 },
+      { years: 12, months: 11, days: 0 }
     ];
     const totalYears = sentences.map(s => s.years).reduce((a, b) => a + b);
     const totalMonths = sentences.map(s => s.months).reduce((a, b) => a + b);
+    const totalDays = sentences.map(s => s.days).reduce((a, b) => a + b);
     return moment(this.arrestDate)
       .add(totalYears, 'years')
-      .add(totalMonths, 'months');
+      .add(totalMonths, 'months')
+      .add(totalDays, 'days');
   }
 
   remainingTime = () => {
